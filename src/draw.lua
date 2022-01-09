@@ -87,3 +87,24 @@ function draw_endgame()
   if fadeperc==1 then return end
   draw_windows()
 end
+
+function draw_menu()
+  cls()
+  map()
+
+  local v=sin(time())
+  local bx=27+v
+  local by=40+menu_pos*10
+  line(bx,by,bx,by+4,7)
+  line(bx+1,by+1,bx+1,by+3,7)
+  line(bx+2,by+2,bx+2,by+2,7)
+
+  print("grid size: ", 35, 40, 5)
+  print(board_size, 79, 40, menu_pos==0 and 7 or 5)
+
+  print("show errors: ", 35, 50, 5)
+  print(display_errors and "yes" or "no", 87, 50, menu_pos==1 and 7 or 5)
+
+  print("press \x97 when ready", 25, 81+v, 5)
+  print("press \x97 when ready", 25, 80+v, 7)
+end

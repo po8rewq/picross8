@@ -1,5 +1,4 @@
- function init_game(v)
-  fadeperc=1
+function init_game(v)
   p_x,p_y=0,0
   board_size=v
   padding=64-board_size*8/2+5
@@ -10,7 +9,7 @@ end
 
 function reset_board(raws)
   board={}
-  state={}
+  state={} -- 0:not played, 1:mine, 2:error, 3:empty
   total=0
   progress=0
   errors=0
