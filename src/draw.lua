@@ -30,28 +30,42 @@ function draw_cursor(_x,_y)
 end
  
 function draw_hints_x(hints,raws)
+  local current_values=get_hint_x(state,raws,1)
+
   for i=1,#hints do
    local lh=hints[i]
+   local color=7
+   if array_equals(lh, current_values[i]) then
+    color=5
+   end
+
    for j=1,#lh do
     print(
      hints[i][j],
      padding-8*(#lh)+(j-1)*8,
      padding+(i-1)*8+2,
-     7
+     color
     )
    end
   end
 end
  
 function draw_hints_y(hints,raws)
+  local current_values=get_hint_y(state,raws,1)
+
   for i=1,#hints do
    local lh=hints[i]
+   local color=7
+   if array_equals(lh, current_values[i]) then
+    color=5
+   end
+
    for j=1,#lh do 
     print(
      hints[i][j],
      padding+(i-1)*8+2,
      padding-8*(#lh)+(j-1)*8,
-     7
+     color
     )
    end
   end
@@ -66,12 +80,12 @@ function draw_state(state,raws)
     local y1=y0+6
     
     local cell_value=state[y][x]
-    if cell_value==1 then --full
+    if cell_value==1 then
       rectfill(x0,y0,x1,y1,3)
-    elseif cell_value==2 then --error
+    elseif cell_value==2 then
       rectfill(x0,y0,x1,y1,7)
       print("x",x0+2,y0+1,8)
-    elseif cell_value==3 then --empty
+    elseif cell_value==3 then
       rectfill(x0,y0,x1,y1,15)
     end
    end
